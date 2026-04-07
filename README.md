@@ -9,6 +9,7 @@
 [![Node.js 18+](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org)
 [![Codex Skill](https://img.shields.io/badge/Codex-Skill-blueviolet)](SKILL.md)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Skill-ff7a00.svg)](https://docs.openclaw.ai/tools/skills)
+[![ClawHub](https://img.shields.io/badge/ClawHub-qgcar--skill-orange.svg)](https://clawhub.ai/skills/qgcar-skill)
 
 &nbsp;
 
@@ -21,7 +22,7 @@
 
 ⚠️ **本项目只生成微信订单填写入口链接，不会自动提交乘客信息、不会保存身份证信息、不会代替你支付。**
 
-[安装](#安装) · [使用](#使用) · [ai--openclaw-用法](#ai--openclaw-用法) · [支持路线](#支持路线) · [开发与发布](#开发与发布)
+[安装](#安装) · [小龙虾一键安装](#小龙虾一键安装) · [使用](#使用) · [ai--openclaw-用法](#ai--openclaw-用法) · [支持路线](#支持路线) · [开发与发布](#开发与发布)
 
 ---
 
@@ -36,6 +37,32 @@ curl -fsSL https://raw.githubusercontent.com/qybaihe/qg-skill/26ed8e31342968836b
 ```
 
 脚本会优先从 npm 安装 `qg-skill`；如果 npm 包还没发布，会自动 fallback 到 GitHub 源码构建安装。
+
+### 小龙虾一键安装
+
+已发布到 ClawHub：
+
+```text
+https://clawhub.ai/skills/qgcar-skill
+```
+
+如果你在用小龙虾 / OpenClaw，可以直接让它安装这个技能：
+
+```text
+帮我从 ClawHub 安装 qgcar-skill，然后用它帮我查询岐关车并生成微信下单链接
+```
+
+或者手动执行：
+
+```bash
+clawhub install qgcar-skill
+```
+
+如果还没有安装 `qg` CLI，继续执行一键部署脚本：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/qybaihe/qg-skill/26ed8e31342968836b672d0ea7ab2a275361779c/install.sh | bash
+```
 
 ### 只安装 CLI
 
