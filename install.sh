@@ -20,9 +20,6 @@ need_command npm
 
 node -e 'const major = Number(process.versions.node.split(".")[0]); if (major < 18) { console.error("Node.js 18+ is required."); process.exit(1); }'
 
-echo "Installing qg CLI from npm..."
-npm install -g "$PACKAGE_NAME"
-
 tmp_dir="$(mktemp -d)"
 cleanup() {
   rm -rf "$tmp_dir"
@@ -43,6 +40,18 @@ else
     exit 1
   fi
   repo_dir="$extracted_dir"
+fi
+
+echo "Installing qg CLI..."
+if npm install -g "$PACKAGE_NAME"; then
+  echo "Installed qg CLI from npm package: $PACKAGE_NAME"
+else
+  echo "npm package is not available yet; installing qg CLI from the GitHub checkout..."
+  (
+    cd "$repo_dir"
+    npm install
+    npm install -g .
+  )
 fi
 
 echo "Installing Codex skill to $SKILL_DIR..."

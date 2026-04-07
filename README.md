@@ -34,6 +34,8 @@
 curl -fsSL https://raw.githubusercontent.com/qybaihe/qg-skill/main/install.sh | bash
 ```
 
+脚本会优先从 npm 安装 `qg-skill`；如果 npm 包还没发布，会自动 fallback 到 GitHub 源码构建安装。
+
 ### 只安装 CLI
 
 ```bash
