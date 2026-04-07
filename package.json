@@ -1,13 +1,14 @@
 {
   "name": "qg-skill",
   "version": "0.1.0",
-  "description": "Qiguan campus bus CLI and Codex skill for generating WeChat order-entry links.",
+  "description": "Qiguan campus bus CLI and Codex/OpenClaw skill for generating WeChat order-entry links.",
   "keywords": [
     "qiguan",
     "bus",
     "cli",
     "skill",
     "codex",
+    "openclaw",
     "zhuhai",
     "sysu"
   ],

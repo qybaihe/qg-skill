@@ -6,7 +6,9 @@ TARBALL_URL="${QG_SKILL_TARBALL_URL:-https://github.com/qybaihe/qg-skill/archive
 PACKAGE_NAME="${QG_SKILL_PACKAGE:-qg-skill}"
 SKILL_NAME="${QG_SKILL_NAME:-qgcar-skill}"
 CODEX_HOME_DIR="${CODEX_HOME:-$HOME/.codex}"
-SKILL_DIR="$CODEX_HOME_DIR/skills/$SKILL_NAME"
+OPENCLAW_HOME_DIR="${OPENCLAW_HOME:-$HOME/.openclaw}"
+CODEX_SKILL_DIR="$CODEX_HOME_DIR/skills/$SKILL_NAME"
+OPENCLAW_SKILL_DIR="$OPENCLAW_HOME_DIR/skills/$SKILL_NAME"
 
 need_command() {
   if ! command -v "$1" >/dev/null 2>&1; then
@@ -34,6 +36,23 @@ install_from_source() {
     fi
     npm install -g "$tarball"
   )
+}
+
+install_skill_to_dir() {
+  local target_dir="$1"
+  local label="$2"
+
+  echo "Installing $label skill to $target_dir..."
+  mkdir -p "$(dirname "$target_dir")"
+  rm -rf "$target_dir"
+  mkdir -p "$target_dir"
+
+  if command -v rsync >/dev/null 2>&1; then
+    rsync -a --exclude ".git" --exclude "node_modules" "$repo_dir/" "$target_dir/"
+  else
+    cp -R "$repo_dir/." "$target_dir/"
+    rm -rf "$target_dir/.git" "$target_dir/node_modules"
+  fi
 }
 
 tmp_dir="$(mktemp -d)"
@@ -71,21 +90,13 @@ else
   install_from_source
 fi
 
-echo "Installing Codex skill to $SKILL_DIR..."
-mkdir -p "$CODEX_HOME_DIR/skills"
-rm -rf "$SKILL_DIR"
-mkdir -p "$SKILL_DIR"
-
-if command -v rsync >/dev/null 2>&1; then
-  rsync -a --exclude ".git" --exclude "node_modules" "$repo_dir/" "$SKILL_DIR/"
-else
-  cp -R "$repo_dir/." "$SKILL_DIR/"
-  rm -rf "$SKILL_DIR/.git" "$SKILL_DIR/node_modules"
-fi
+install_skill_to_dir "$CODEX_SKILL_DIR" "Codex"
+install_skill_to_dir "$OPENCLAW_SKILL_DIR" "OpenClaw"
 
 echo ""
 echo "Installed qg CLI:"
 qg --version
 echo ""
-echo "Installed skill: $SKILL_DIR"
+echo "Installed Codex skill: $CODEX_SKILL_DIR"
+echo "Installed OpenClaw skill: $OPENCLAW_SKILL_DIR"
 echo "Try: qg list --today --available"

@@ -8,19 +8,20 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node.js 18+](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org)
 [![Codex Skill](https://img.shields.io/badge/Codex-Skill-blueviolet)](SKILL.md)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-Skill-ff7a00.svg)](https://docs.openclaw.ai/tools/skills)
 
 &nbsp;
 
 `qg-skill` 同时提供两件东西：
 
 - 一个全局命令行工具：`qg` / `qg-list`
-- 一个 Codex Skill：`qgcar-skill`
+- 一个 Codex / OpenClaw Skill：`qgcar-skill`
 
 它可以查询岐关车班次，列出 `Code`，再用 `qg link CODE` 生成微信可打开的 `BusOrderWrite` 下单入口链接。
 
 ⚠️ **本项目只生成微信订单填写入口链接，不会自动提交乘客信息、不会保存身份证信息、不会代替你支付。**
 
-[安装](#安装) · [使用](#使用) · [ai-skill-用法](#ai-skill-用法) · [支持路线](#支持路线) · [开发与发布](#开发与发布)
+[安装](#安装) · [使用](#使用) · [ai--openclaw-用法](#ai--openclaw-用法) · [支持路线](#支持路线) · [开发与发布](#开发与发布)
 
 ---
 
@@ -28,7 +29,7 @@
 
 ### 一键部署
 
-安装 CLI，并把 Skill 安装到 `~/.codex/skills/qgcar-skill`：
+安装 CLI，并把 Skill 同时安装到 `~/.codex/skills/qgcar-skill` 和 `~/.openclaw/skills/qgcar-skill`：
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/qybaihe/qg-skill/f1f94e480aa8ab8fca734ac15c3eff5600c7633a/install.sh | bash
@@ -54,6 +55,13 @@ qg routes
 ```bash
 mkdir -p ~/.codex/skills
 git clone https://github.com/qybaihe/qg-skill ~/.codex/skills/qgcar-skill
+```
+
+OpenClaw 用户也可以装到：
+
+```bash
+mkdir -p ~/.openclaw/skills
+git clone https://github.com/qybaihe/qg-skill ~/.openclaw/skills/qgcar-skill
 ```
 
 如果你只安装 Skill，也需要确保机器上能运行 `qg` 命令：
@@ -113,9 +121,9 @@ qg link --start zhuhai --to south --station zhuhai --time 16:00
 
 ---
 
-## AI Skill 用法
+## AI / OpenClaw 用法
 
-安装后一轮新对话里可以直接说：
+安装后一轮新对话里可以直接让 Codex 或 OpenClaw 帮你订票：
 
 ```text
 Use $qgcar-skill to find a Qiguan bus from Zhuhai to South Campus today and generate a WeChat order link.
@@ -127,6 +135,12 @@ Use $qgcar-skill to find a Qiguan bus from Zhuhai to South Campus today and gene
 帮我查今天珠海中大去南校区的可订班次，然后给我 16:00 那班的微信下单链接
 ```
 
+OpenClaw 里可以这样说：
+
+```text
+让 OpenClaw 用 qgcar-skill 帮我查今天珠海中大去南校区的可订班次，并生成微信下单链接
+```
+
 Skill 会指导 AI 走安全流程：
 
 ```text
@@ -135,6 +149,13 @@ qg link CODE
 ```
 
 不会自动提交订单或支付。
+
+OpenClaw 可用性检查：
+
+```bash
+openclaw skills list
+openclaw skills info qgcar-skill
+```
 
 ---
 
