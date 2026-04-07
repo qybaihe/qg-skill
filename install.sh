@@ -25,7 +25,14 @@ install_from_source() {
   (
     cd "$repo_dir"
     npm install
-    npm install -g .
+    npm run build
+    npm pack --pack-destination "$tmp_dir" >/dev/null
+    tarball="$(find "$tmp_dir" -maxdepth 1 -type f -name "qg-skill-*.tgz" | head -n 1)"
+    if [ -z "$tarball" ]; then
+      echo "Failed to create qg-skill npm tarball." >&2
+      exit 1
+    fi
+    npm install -g "$tarball"
   )
 }
 
