@@ -52,6 +52,14 @@ qg routes
 
 ### 只安装 Skill
 
+从 ClawHub 安装到当前工作区：
+
+```bash
+clawhub install qgcar-skill
+```
+
+或者手动安装到 Codex：
+
 ```bash
 mkdir -p ~/.codex/skills
 git clone https://github.com/qybaihe/qg-skill ~/.codex/skills/qgcar-skill
@@ -155,6 +163,12 @@ OpenClaw 可用性检查：
 ```bash
 openclaw skills list
 openclaw skills info qgcar-skill
+```
+
+ClawHub 发布页：
+
+```text
+https://clawhub.ai/skills/qgcar-skill
 ```
 
 ---
