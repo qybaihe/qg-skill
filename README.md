@@ -32,7 +32,7 @@
 安装 CLI，并把 Skill 同时安装到 `~/.codex/skills/qgcar-skill` 和 `~/.openclaw/skills/qgcar-skill`：
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/qybaihe/qg-skill/f1f94e480aa8ab8fca734ac15c3eff5600c7633a/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/qybaihe/qg-skill/26ed8e31342968836b672d0ea7ab2a275361779c/install.sh | bash
 ```
 
 脚本会优先从 npm 安装 `qg-skill`；如果 npm 包还没发布，会自动 fallback 到 GitHub 源码构建安装。
