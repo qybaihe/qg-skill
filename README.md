@@ -16,7 +16,7 @@
 - 一个全局命令行工具：`qg` / `qg-list`
 - 一个 Codex Skill：`qgcar-skill`
 
-它可以查询岐关车班次，列出 `Code`，再用 `qg link <code>` 生成微信可打开的 `BusOrderWrite` 下单入口链接。
+它可以查询岐关车班次，列出 `Code`，再用 `qg link CODE` 生成微信可打开的 `BusOrderWrite` 下单入口链接。
 
 ⚠️ **本项目只生成微信订单填写入口链接，不会自动提交乘客信息、不会保存身份证信息、不会代替你支付。**
 
@@ -129,7 +129,7 @@ Skill 会指导 AI 走安全流程：
 
 ```text
 qg list ... --available
-qg link <code>
+qg link CODE
 ```
 
 不会自动提交订单或支付。
@@ -232,7 +232,7 @@ git push -u origin main
 ## 注意事项
 
 - 这是非官方工具，接口和站点信息可能会变化。
-- `priceMark` 会随查询刷新，所以建议先 `qg list`，再立刻 `qg link <code>`。
+- `priceMark` 会随查询刷新，所以建议先 `qg list`，再立刻 `qg link CODE`。
 - 微信链接打开后仍需要你自己确认乘客、订单和支付。
 - 不建议在 CLI 或 Skill 里保存身份证、手机号等乘客隐私信息。
 

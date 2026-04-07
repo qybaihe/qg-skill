@@ -62,7 +62,7 @@ Dates must be within one week. `--time` must use `HH:mm` and can match either th
 
 ## List Code Flow
 
-`qg list` writes the latest table to `~/.qiguan-cli/last-list.json`. `qg link <code>` reads that cache, re-fetches the matched schedule to get a fresh `priceMark`, and prints a WeChat order-entry link.
+`qg list` writes the latest table to `~/.qiguan-cli/last-list.json`. `qg link CODE` reads that cache, re-fetches the matched schedule to get a fresh `priceMark`, and prints a WeChat order-entry link.
 
 Use the code flow when possible:
 
@@ -100,7 +100,7 @@ npm run build
 npm link
 ```
 
-If `qg link <code>` fails because the cache is missing, run `qg list ... --available` again and use a new code.
+If `qg link CODE` fails because the cache is missing, run `qg list ... --available` again and use a new code.
 
 If the WeChat link fails, rerun `qg list` and `qg link` to refresh schedule availability and `priceMark`.
 

@@ -106,6 +106,6 @@ When listing schedules, summarize the useful rows with code, line time, boarding
 
 When generating a link, include the link in a plain copyable block. Mention that the link is an order-entry link, not a completed booking.
 
-If `qg link <code>` says there is no cached list, run `qg list ... --available` again and use the new code. If a link is stale or fails in WeChat, re-run `qg list` and `qg link` to refresh `priceMark`.
+If `qg link CODE` says there is no cached list, run `qg list ... --available` again and use the new code. If a link is stale or fails in WeChat, re-run `qg list` and `qg link` to refresh `priceMark`.
 
 For detailed command behavior and troubleshooting, read `references/qg-cli.md`.
